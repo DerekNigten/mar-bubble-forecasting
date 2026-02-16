@@ -77,13 +77,28 @@ write.csv(series_out,
           "/Users/derek/mar-bubble-forecasting/data/processed/nickel_filtered.csv",
           row.names = FALSE)
 
+# Get standard errors
+inf <- inference(
+  y         = cycle,
+  x         = NULL,
+  B_C       = best_fit$coef.c,
+  B_NC      = best_fit$coef.nc,
+  B_x       = best_fit$coef.exo,
+  IC        = best_fit$coef.int,
+  sig       = best_fit$scale,
+  df        = best_fit$df,
+  sig_level = 0.05
+)
+
 params_out <- data.frame(
   r     = best_r,
   s     = best_s,
   phi   = phi,
   psi   = psi,
   df    = df_t,
-  scale = scale
+  scale = scale,
+  phi_se   = inf$se.c,
+  psi_se   = inf$se.nc
 )
 write.csv(params_out,
           "/Users/derek/mar-bubble-forecasting/data/processed/mar_parameters.csv",

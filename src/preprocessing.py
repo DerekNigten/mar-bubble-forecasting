@@ -25,6 +25,8 @@ class MARParams:
     scale: float   # Student-t scale (σ)
     r:     int     # causal lag order
     s:     int     # noncausal lag order
+    phi_se: float   # standard error of phi
+    psi_se: float   # standard error of psi
 
     def __post_init__(self):
         assert self.r >= 0 and self.s >= 0, "Lag orders must be non-negative."
@@ -60,6 +62,8 @@ def load_parameters(path: Path = PARAMS_PATH) -> MARParams:
         scale=float(row["scale"]),
         r=int(row["r"]),
         s=int(row["s"]),
+        phi_se=float(row["phi_se"]),
+        psi_se=float(row["psi_se"]),
     )
 
 
