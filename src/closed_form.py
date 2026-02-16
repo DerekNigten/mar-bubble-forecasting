@@ -98,3 +98,11 @@ def make_grid(center: float, gamma: float, psi: float, n_points: int = 2000) -> 
     marginal_scale = gamma / (1.0 - psi)
     half_width = 20.0 * marginal_scale
     return np.linspace(center - half_width, center + half_width, n_points)
+
+# ── Validation log ─────────────────────────────────────────────────────────────
+# Run: python -c "from src.closed_form import ..."  (see README or notebook 03)
+# Results (2025-02, last observed u_t):
+#   - density integrates to 1.0 ✓
+#   - grid range: -34059.4 to 38245.5 ✓
+#   - max density at: 2614.5 ✓
+# Full visual validation (Figure 2 replication) → notebooks/03_forecasting_methods.ipynb
