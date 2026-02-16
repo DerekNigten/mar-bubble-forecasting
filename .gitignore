@@ -203,6 +203,18 @@ cython_debug/
 
 # Marimo
 marimo/_static/
+
+# Mac system files
+.DS_Store
+data/.DS_Store
+
+# R project files
+*.Rproj
+.Rhistory
+.RData
+
+# Duplicate scripts
+marx_estimation.R
 marimo/_lsp/
 __marimo__/
 .Rproj.user
