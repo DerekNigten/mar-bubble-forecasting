@@ -63,16 +63,20 @@ cat("degrees of freedom:", df_t,  "\n")
 cat("scale:             ", scale, "\n")
 
 # ── 6. Extract noncausal component u_t ───────────────────────
-T   <- length(cycle)
-u_t <- cycle[(best_r+1):T] -
+T       <- length(cycle)
+n_res   <- length(best_fit$residuals)  # 475 for MAR(1,1)
+u_t     <- cycle[(best_r+1):T] -
   as.numeric(filter(cycle, phi, sides = 1))[(best_r+1):T]
+u_t     <- u_t[1:n_res]  # trim to match residuals length
 
 # ── 7. Export to data/processed/ ─────────────────────────────
 series_out <- data.frame(
-  Date  = nickel$Date[(best_r+1):T],
-  cycle = cycle[(best_r+1):T],
-  u_t   = u_t
+  Date      = nickel$Date[(best_r+1):(best_r+n_res)],
+  cycle     = cycle[(best_r+1):(best_r+n_res)],
+  u_t       = u_t,
+  residuals = best_fit$residuals
 )
+
 write.csv(series_out,
           "/Users/derek/mar-bubble-forecasting/data/processed/nickel_filtered.csv",
           row.names = FALSE)

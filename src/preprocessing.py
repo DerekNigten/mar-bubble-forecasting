@@ -76,7 +76,7 @@ def load_filtered_series(path: Path = FILTERED_PATH) -> pd.DataFrame:
     df["Date"] = df["Date"].apply(_parse_mar_date)
     df = df.set_index("Date").sort_index()
     df.index.freq = pd.tseries.frequencies.to_offset("MS")
-    cols = [c for c in ["cycle", "u_t"] if c in df.columns]
+    cols = [c for c in ["cycle", "u_t", "residuals"] if c in df.columns]
     if not cols:
         raise ValueError(f"Expected 'cycle' and/or 'u_t'. Got: {df.columns.tolist()}")
 
