@@ -11,7 +11,7 @@ print("=== Running Table 1 (Method 1 - Simulation-based) ===")
 t1 = run_table1(
     psi_values     = [0.2, 0.5, 0.8],
     df_values      = [1.0, 2.0, 3.0],
-    n_replications = 1000,
+    n_replications = 200,
     N              = 1_000_000,
     M              = 100,
     crash_pct      = 0.25,
@@ -25,7 +25,7 @@ t2 = run_table2(
     psi_values     = [0.2, 0.5, 0.8],
     df_values      = [1.0, 2.0, 3.0],
     sample_sizes   = [100, 200, 500, 1000],
-    n_replications = 1000,
+    n_replications = 200,
     crash_pct      = 0.25,
 )
 t2.to_csv("outputs/tables/table2_sample.csv", index=False)

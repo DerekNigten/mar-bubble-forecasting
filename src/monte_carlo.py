@@ -61,7 +61,7 @@ def find_bubble_point(u: np.ndarray, quantile: float = 0.995) -> tuple[int, floa
 def monte_carlo_sim(
     psi: float,
     df: float,
-    n_replications: int = 1000,
+    n_replications: int = 200, # paper used 1000
     T: int = 500,
     quantile: float = 0.995,
     N: int = 100_000,
