@@ -118,7 +118,11 @@ def monte_carlo_sim(
         grid = make_grid(u_T, scale, psi)
         density = cauchy_predictive_density(u_T, psi, scale, grid)
         cdf = np.cumsum(density) * (grid[1] - grid[0])
-        cauchy_ref = float(cdf[grid <= threshold].max())
+        mask = grid <= threshold
+        if mask.any():
+            cauchy_ref = float(cdf[mask].max())
+        else:
+            cauchy_ref = None
 
     return {
         "psi":       psi,
