@@ -155,32 +155,29 @@ This chapter describes three approaches to computing the predictive density $f(y
 
 For Cauchy-distributed errors (Student-t with df = 1), the predictive density admits a closed-form expression derived by Gouriéroux & Zakoïan (2017). This provides an exact benchmark for validating the numerical methods.
 
-**Equation 5 — One-step ahead density for MAR(0,1):**
+**One-step ahead density for MAR(0,1):**
 
 For a purely noncausal process $u_t = \varepsilon_t + \psi \varepsilon_{t+1} + \psi^2 \varepsilon_{t+2} + \cdots$ with Cauchy errors, the predictive density of $u^*_{T+1}$ given $u_T$ is:
 
-$$l(u^* \mid u_T) = \frac{1}{\pi\gamma} \frac{1}{1 + \frac{(u_T - \psi u^*)^2}{\gamma^2}} \frac{\gamma^2 + (1-\psi)^2 u_T^2}{\gamma^2 + (1-\psi)^2 (u^*)^2}$$
+$$l(u^{\ast}_{T+1} | u_T) = \frac{1}{\pi\gamma} \cdot \frac{1}{1 + \frac{(u_T - \psi u^{\ast}_{T+1})^2}{\gamma^2}} \cdot \frac{\gamma^2 + (1-\psi)^2 u_T^2}{\gamma^2 + (1-\psi)^2 (u^{\ast}_{T+1})^2}$$
 
 where $\gamma$ is the scale parameter of $\varepsilon_t$.
 
-**Three factors:**
-1. Normalizing constant: $1/(\pi\gamma)$
-2. Transition kernel: $g(u_T - \psi u^*)$ — Cauchy density centered at $\psi u^*$
-3. Stationary density ratio: $l(u_T) / l(u^*)$ — adjusts for marginal density
-
-The ratio term makes this a **conditional** density rather than just the transition density.
-
 **MAR(1,1) extension:**
 
-For the full MAR(1,1) model $y_t = \phi y_{t-1} + u_t$, substitute:
-- $u_T = y_T - \phi y_{T-1}$
-- $u^* = y^* - \phi y_T$
+For the full MAR(1,1) model $y_t = \phi y_{t-1} + u_t$, we transform from the noncausal component $u_t$ back to the observed series $y_t$.
 
-The transformation is linear with Jacobian = 1, so:
+Substitute:
+- $u_T = y_T - \phi y_{T-1}$ (current noncausal component)
+- $u^{\ast}_{T+1} = y^{\ast}_{T+1} - \phi y_T$ (future noncausal component)
 
-$$l(y^* | y_T, y_{T-1}) = l(u^* | u_T)$$
+where $y^{\ast}_{T+1}$ is the candidate future value of the observed series.
 
-evaluated at $u_T = y_T - \phi y_{T-1}$ and $u^* = y^* - \phi y_T$.
+The transformation is linear with Jacobian = 1, so the density over $y^{\ast}_{T+1}$ equals the density over $u^{\ast}_{T+1}$:
+
+$$l(y^{\ast}_{T+1} | y_T, y_{T-1}) = l(u^{\ast}_{T+1} | u_T)$$
+
+evaluated at the substituted values above.
 
 **Implementation:**
 
