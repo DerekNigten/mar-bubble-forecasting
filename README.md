@@ -12,7 +12,7 @@ The project replicates two numerical forecasting methods:
 
 Applied to the 2007 Nickel price bubble, both methods successfully capture bi-modal predictive densities, showing both crash and continuation scenarios that standard point forecasts miss entirely.
 
-**Note on Data:** This replication uses World Bank Global Economic Monitor data. The original paper uses IMF Primary Commodity Prices. Minor parameter differences result from this data source variation.
+**Note on Data:** This replication uses World Bank Global Economic Monitor monthy Nickel price data. The original paper uses IMF Primary Commodity Prices. Minor parameter differences result from this data source variation.
 
 ## Installation
 
@@ -160,6 +160,7 @@ Bachelor Econometrics & Operations Research
 VU Amsterdam  
 
 LinkedIn: [@DerekNigten](www.linkedin.com/in/dereknigten)
+
 
 
 
