@@ -12,6 +12,8 @@ The project replicates two numerical forecasting methods:
 
 Applied to the 2007 Nickel price bubble, both methods successfully capture bi-modal predictive densities, showing both crash and continuation scenarios that standard point forecasts miss entirely.
 
+**Note on Data:** This replication uses World Bank Global Economic Monitor data. The original paper uses IMF Primary Commodity Prices. Minor parameter differences result from this data source variation.
+
 ## Installation
 
 ### Prerequisites
@@ -62,8 +64,8 @@ Open Jupyter and run notebooks sequentially:
 2. **`02_estimation_results.ipynb`** — presents parameter estimates, residual diagnostics, non-normality tests  
    Outputs: 2 figures in `outputs/figures/`
 
-3. **`04_empirical_application.ipynb`** — reproduces Figure 9 and Table 3 from the paper  
-   Outputs: Table 3 CSV, forecast point figure, predictive density plots
+3. **`04_empirical_application.ipynb`** — applies forecasting methods to the 2007 Nickel bubble  
+Outputs: crash probabilities at six forecast points, density plots showing bi-modality
 
 **Runtime:** Notebooks 01, 02, 04 combined: ~5 minutes
 
@@ -76,7 +78,7 @@ Validates forecasting methods by simulating MAR(0,1) processes with known parame
 python run_monte_carlo.py
 ```
 
-**Runtime:** ~6-8 hours (200 replications, N=100,000)  
+**Runtime:** ~6-8 hours on CPU (200 replications, N=100,000)  
 **Note:** For faster testing, reduce settings in `run_monte_carlo.py` to `n_replications=50, N=10_000` (~30 minutes)
 
 **Outputs:**
@@ -159,11 +161,6 @@ VU Amsterdam
 
 LinkedIn: [@DerekNigten](www.linkedin.com/in/dereknigten)
 
-### Note on Data Sources
-The original paper (Hecq & Voisin, 2021) uses IMF Primary Commodity Prices
-data. This replication uses World Bank Global Economic Monitor data for the
-same series and period. Minor differences in estimated parameters are
-attributed to this source difference.
 
 
 
