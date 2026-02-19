@@ -8,7 +8,7 @@ library(MARX)
 library(mFilter)
 
 # ── 1. Load data ─────────────────────────────────────────────
-nickel <- read.csv("/Users/derek/mar-bubble-forecasting/data/raw/nickel_prices_1980_2019.csv")
+nickel <- read.csv("../data/raw/nickel_prices_1980_2019.csv")
 price  <- nickel$Nickel_Price_USD_per_MT
 
 # ── 2. HP filter (lambda = 129600 for monthly data) ──────────
