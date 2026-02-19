@@ -44,7 +44,7 @@ install.packages("mFilter")
 
 The R script estimates the MAR(1,1) model and exports processed data.
 
-Open `r/marx_estimation.R` in RStudio and run the entire script (**Cmd+Shift+Enter** on Mac, **Ctrl+Shift+Enter** on Windows).
+Open `r/marx_estimation.R` in RStudio and run the entire script.
 
 **Runtime:** ~2 minutes
 
@@ -160,6 +160,7 @@ Bachelor Econometrics & Operations Research
 VU Amsterdam  
 
 LinkedIn: [@DerekNigten](www.linkedin.com/in/dereknigten)
+
 
 
 
