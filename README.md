@@ -4,7 +4,7 @@ Replication of Hecq & Voisin (2021) for bachelor thesis at VU Amsterdam.
 
 ## Overview
 
-This repository implements mixed causal-noncausal autoregressive (MAR) models for forecasting speculative bubbles in commodity markets. MAR models combine backward-looking (causal) and forward-looking (noncausal) components to generate locally explosive episodes within a globally stationary framework.
+This repository implements mixed causal-noncausal autoregressive (MAR) models for forecasting speculative bubbles. MAR models combine backward-looking (causal) and forward-looking (noncausal) components to generate locally explosive episodes within a globally stationary framework.
 
 The project replicates two numerical forecasting methods:
 - **Method 1 (Simulation-based):** Approximates predictive densities by drawing future error sequences and weighting by consistency with current observations
@@ -88,8 +88,8 @@ Once complete, run notebook **`03_forecasting_methods.ipynb`** to format these r
 ## Project Structure
 ```
 mar-bubble-forecasting/
-├── README.md                 # This file
-├── METHODOLOGY.md            # Technical documentation
+├── README.md                 
+├── TECHNICAL_DOCUMENTATION.md
 ├── requirements.txt          # Python dependencies
 │
 ├── data/
@@ -100,7 +100,7 @@ mar-bubble-forecasting/
 │   └── marx_estimation.R     # MAR model estimation script
 │
 ├── src/
-│   ├── preprocessing.py      # Data loading utilities
+│   ├── preprocessing.py      # Data loading
 │   ├── closed_form.py        # Cauchy closed-form benchmark
 │   ├── forecasting_sim.py    # Method 1: simulation-based
 │   ├── forecasting_sample.py # Method 2: sample-based
@@ -149,7 +149,7 @@ Full table: `outputs/tables/table3_crash_probabilities.csv`
 
 ## Documentation
 
-Full methodology and implementation details → [METHODOLOGY.md](METHODOLOGY.md)
+Full methodology and implementation details → [TECHNICAL_DOCUMENTATION.md](TECHNICAL_DOCUMENTATION.md)
 
 ## Author
 
@@ -164,5 +164,6 @@ The original paper (Hecq & Voisin, 2021) uses IMF Primary Commodity Prices
 data. This replication uses World Bank Global Economic Monitor data for the
 same series and period. Minor differences in estimated parameters are
 attributed to this source difference.
+
 
 
