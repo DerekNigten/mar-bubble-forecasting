@@ -7,6 +7,9 @@ Method: Gouriéroux & Jasiak (2016), Section 4.2 of Hecq & Voisin (2021).
 import numpy as np
 from scipy.stats import t as student_t
 
+# np.trapezoid added in NumPy 2.0; np.trapz removed in NumPy 2.0
+_trapz = getattr(np, 'trapezoid', np.trapz)
+
 
 def compute_sample_weights(
     u_T: float,
@@ -90,7 +93,7 @@ def sample_predictive_density(
         density[k] = transition * numer / denom
 
     # Normalise so density integrates to 1
-    normaliser = np.trapz(density, grid)
+    normaliser = _trapz(density, grid)
     return density / normaliser
 
 def sample_crash_probability(
@@ -132,4 +135,4 @@ def sample_crash_probability(
     below_threshold = grid <= threshold
     if not below_threshold.any():
         return 0.0
-    return float(np.trapz(density[below_threshold], grid[below_threshold]))
+    return float(_trapz(density[below_threshold], grid[below_threshold]))
