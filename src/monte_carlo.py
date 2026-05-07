@@ -195,7 +195,6 @@ def monte_carlo_sample(
         "q1_prob":    float(np.percentile(probs, 25)),
         "mode_prob":  float(probs.max()),
         "n_valid":    len(probs),
-        "raw_probs":  probs,
     }
 
 def run_table1(
@@ -241,7 +240,7 @@ def run_table2(
     sample_sizes: list = [100, 200, 500, 1000],
     n_replications: int = 1000,
     crash_pct: float = 0.25,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+) -> pd.DataFrame:
     """
     Reproduce Table 2 of Hecq & Voisin (2021).
     Sample-based crash probabilities across ψ, df and sample sizes.
@@ -249,16 +248,10 @@ def run_table2(
     Warning: computationally intensive.
     With n_replications=1000 expect several hours.
     For testing use n_replications=50.
-
-    Returns
-    -------
-    summary_df  : aggregated statistics (mean, std, Q1, mode) — Table 2
-    raw_draws_df: one row per replication with columns psi, df, sample_size, rep, prob
     """
-    rows      = []
-    raw_rows  = []
-    total     = len(psi_values) * len(df_values) * len(sample_sizes)
-    done      = 0
+    rows = []
+    total = len(psi_values) * len(df_values) * len(sample_sizes)
+    done = 0
 
     for psi in psi_values:
         for df in df_values:
@@ -272,21 +265,7 @@ def run_table2(
                     n_replications=n_replications,
                     crash_pct=crash_pct,
                 )
-                # Summary row (drop raw_probs before storing)
-                raw_probs = result.pop("raw_probs")
                 rows.append(result)
 
-                # Raw draws
-                for rep, prob in enumerate(raw_probs):
-                    raw_rows.append({
-                        "psi":         psi,
-                        "df":          df,
-                        "sample_size": T,
-                        "rep":         rep,
-                        "prob":        prob,
-                    })
-
-    summary_df   = pd.DataFrame(rows)
-    raw_draws_df = pd.DataFrame(raw_rows)
-    return summary_df, raw_draws_df
+    return pd.DataFrame(rows)
 
