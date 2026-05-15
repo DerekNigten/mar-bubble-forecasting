@@ -125,13 +125,13 @@ mar-bubble-forecasting/
 
 ### Forecast Points on 2007 Nickel Bubble
 
-![Forecast Points](outputs/figures/09_forecast_points.png)
+![Forecast Points](outputs/figures/paper/09_forecast_points.png)
 
 Six points marked along the bubble trajectory, from early buildup (Q0.48) to peak (Q1.00).
 
 ### Bi-Modal Predictive Densities
 
-![Predictive Densities](outputs/figures/10_predictive_densities.png)
+![Predictive Densities](outputs/figures/extra/10_predictive_densities.png)
 
 During bubble episodes (Points 2-5), the predictive density splits into crash mode (near 0) and continuation mode. Point 1 (normal period) shows uni-modal density.
 
