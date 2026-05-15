@@ -375,7 +375,7 @@ Outputs: `outputs/figures/04_residuals.png`, `05_residual_distribution.png`
 
 **`03_forecasting_methods.ipynb`**
 
-Validates both forecasting methods before applying them to real Nickel data in notebook 04. The logic: for Cauchy errors, exact crash probabilities exist via closed-form. Method 1 is validated by checking it recovers these exact values. Since Method 1 then works for df≠1 where no closed-form exists, its output serves as the benchmark for validating Method 2. Outputs
+Validates both forecasting methods before applying them to real Nickel data in notebook 04. The logic: for Cauchy errors, exact crash probabilities exist via closed-form. Method 1 is validated by checking it recovers these exact values. Since Method 1 then works for df≠1 where no closed-form exists, its output serves as the benchmark for validating Method 2. Outputs:
 
 - **Figure 2** — Cauchy MAR(0,1) predictive density at Q(0.55), Q(0.85), Q(0.975): confirms the unimodal→bimodal transition as the series enters a bubble
 - **Figure 4a** — MSE between Method 1 (N=10,000) and the Cauchy closed-form across Q(0.95)–Q(0.995): shows approximation error grows with bubble level
