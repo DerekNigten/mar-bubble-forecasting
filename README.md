@@ -123,8 +123,6 @@ mar-bubble-forecasting/
 
 ## Key Results
 
-## Key Results
-
 ### Forecast Points on 2007 Nickel Bubble
 
 ![Forecast Points](outputs/figures/09_forecast_points.png)
