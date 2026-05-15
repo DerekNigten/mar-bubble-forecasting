@@ -375,12 +375,16 @@ Outputs: `outputs/figures/04_residuals.png`, `05_residual_distribution.png`
 
 **`03_forecasting_methods.ipynb`**
 
-Validates forecasting methods:
-- Bi-modal density plot at different bubble levels (reproduces Figure 2)
-- Method 1 vs closed form comparison (Cauchy validation)
-- Tables 1 & 2 from Monte Carlo results
+Validates both forecasting methods before applying them to real Nickel data in notebook 04. The logic: for Cauchy errors, exact crash probabilities exist via closed-form. Method 1 is validated by checking it recovers these exact values. Since Method 1 then works for df≠1 where no closed-form exists, its output serves as the benchmark for validating Method 2. Outputs
 
-Outputs: Table 1 and Table 2 formatted for thesis, density visualization
+- **Figure 2** — Cauchy MAR(0,1) predictive density at Q(0.55), Q(0.85), Q(0.975): confirms the unimodal→bimodal transition as the series enters a bubble
+- **Figure 4a** — MSE between Method 1 (N=10,000) and the Cauchy closed-form across Q(0.95)–Q(0.995): shows approximation error grows with bubble level
+- **Figure 4b** — CDF comparison at Q(0.99) for N=10,000 vs N=100,000 vs closed-form: shows more simulations reduce approximation error
+- **Figure 5** — Distribution of Method 1 crash probabilities across 1,000 iterations for N ∈ {10k, 100k, 1M}: shows convergence to the theoretical value 1−ψ=0.2. ⚠️ Computationally expensive (~1–2 hours); run manually.
+- **Figure 6** — Method 1 CDFs for t(2) and t(3) at Q(0.995): confirms bimodality holds beyond Cauchy, with higher crash probabilities for larger df
+- **Figure 7** — Two trajectories reaching the same u_T with different prior histories: illustrates Method 2's learning mechanism — past bubbles lower estimated crash probability
+- **Figure 8** — Distribution of Method 2 crash probabilities across 100 replications for ψ ∈ {0.2, 0.5, 0.8}, T ∈ {500, 1000}: shows how trajectory-dependence grows with ψ and T
+- **Tables 1 & 2** — Summarise crash probabilities across all parameter combinations (ψ, df, T). Theoretical Cauchy values computed via a `cauchy_theoretical()` helper defined inline, wrapping `src/closed_form.py`.
 
 **`04_empirical_application.ipynb`**
 
