@@ -7,8 +7,10 @@ Method: Gouriéroux & Jasiak (2016), Section 4.2 of Hecq & Voisin (2021).
 import numpy as np
 from scipy.stats import t as student_t
 
-# np.trapezoid added in NumPy 2.0; np.trapz removed in NumPy 2.0
-_trapz = getattr(np, 'trapezoid', np.trapz)
+try:
+    _trapz = np.trapezoid
+except AttributeError:
+    _trapz = np.trapz
 
 
 def compute_sample_weights(
