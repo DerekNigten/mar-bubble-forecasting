@@ -218,3 +218,4 @@ marx_estimation.R
 marimo/_lsp/
 __marimo__/
 .Rproj.user
+.claude/
