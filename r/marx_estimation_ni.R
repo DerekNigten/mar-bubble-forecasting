@@ -1,5 +1,5 @@
 # ============================================================
-# marx_estimation.R
+# marx_estimation_ni.R
 # MAR model estimation for Nickel prices (1980-2019)
 # Output: estimated parameters + filtered series -> data/processed/
 # ============================================================
@@ -105,7 +105,7 @@ params_out <- data.frame(
   psi_se   = inf$se.nc
 )
 write.csv(params_out,
-          "/Users/derek/mar-bubble-forecasting/data/processed/mar_parameters.csv",
+          "/Users/derek/mar-bubble-forecasting/data/processed/ni_mar_parameters.csv",
           row.names = FALSE)
 
 cat("\nDone. Files saved to data/processed/\n")

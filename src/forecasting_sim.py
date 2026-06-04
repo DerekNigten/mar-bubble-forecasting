@@ -6,7 +6,7 @@ Method: Lanne et al. (2012a), Section 4.1 of Hecq & Voisin (2021).
 
 import numpy as np
 from scipy.stats import t as student_t
-from src.preprocessing import MARParams
+from src.preprocessing_ni import MARParams
 
 
 def simulate_future_errors(N: int, M: int, df: float, scale: float) -> np.ndarray:

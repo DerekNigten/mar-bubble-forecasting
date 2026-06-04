@@ -6,7 +6,7 @@ that maps y* -> u* via the causal filter before evaluating the density.
 """
 
 import numpy as np
-from src.preprocessing import MARParams
+from src.preprocessing_ni import MARParams
 
 
 def cauchy_predictive_density(

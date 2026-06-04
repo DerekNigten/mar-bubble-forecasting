@@ -75,7 +75,7 @@ The data flows from raw commodity prices through R-based MAR estimation to Pytho
 
 **File location:** `data/raw/nickel_prices_1980_2019.csv`
 
-## 2.2 `r/marx_estimation.R`
+## 2.2 `r/marx_estimation_ni.R`
 
 The R script performs the model estimation using the MARX package. It runs in seven sequential steps, exporting processed data and estimated parameters for use in Python.
 
@@ -102,12 +102,12 @@ The R script performs the model estimation using the MARX package. It runs in se
 6. **Compute u_t** — applies causal filter: $u_t = y_t^{\text{cycle}} - \phi \cdot y_{t-1}^{\text{cycle}}$
 
 7. **Export outputs** — saves to `data/processed/`:
-   - `mar_parameters.csv`: r, s, φ, ψ, df, scale, standard errors
+   - `ni_mar_parameters.csv`: r, s, φ, ψ, df, scale, standard errors
    - `nickel_filtered.csv`: Date, cycle, u_t, residuals (475 observations)
 
 These files serve as inputs for all Python modules.
 
-## 2.3 `src/preprocessing.py`
+## 2.3 `src/preprocessing_ni.py`
 
 This module loads the R outputs and makes them available to all Python forecasting modules. It provides a single entry point for data access.
 
@@ -145,7 +145,7 @@ params, series = load_data()
 
 where `params` is a `MARParams` object and `series` is a DataFrame with columns `[cycle, u_t, residuals]` and a DatetimeIndex.
 
-**Output:** All forecasting modules import from `preprocessing.py` to access data consistently. No module loads CSV files directly.
+**Output:** All forecasting modules import from `preprocessing_ni.py` to access data consistently. No module loads CSV files directly.
 
 # 3. Forecasting Methods
 

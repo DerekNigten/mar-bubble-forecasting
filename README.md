@@ -44,12 +44,12 @@ install.packages("mFilter")
 
 The R script estimates the MAR(1,1) model and exports processed data.
 
-Open `r/marx_estimation.R` in RStudio and run the entire script.
+Open `r/marx_estimation_ni.R` in RStudio and run the entire script.
 
 **Runtime:** ~2 minutes
 
 **Outputs:**
-- `data/processed/mar_parameters.csv` — estimated φ, ψ, df, scale with standard errors
+- `data/processed/ni_mar_parameters.csv` — estimated φ, ψ, df, scale with standard errors
 - `data/processed/nickel_filtered.csv` — HP-filtered cycle, noncausal component, residuals
 
 ### Step 2: Python Notebooks
@@ -92,48 +92,35 @@ Once complete, run notebook **`03_forecasting_methods.ipynb`** to format these r
 mar-bubble-forecasting/
 ├── README.md                 
 ├── TECHNICAL_DOCUMENTATION.md
-├── requirements.txt                        # Python dependencies
+├── requirements.txt          # Python dependencies
 │
 ├── data/
-│   ├── raw/                  
-│   │   ├── nickel_prices_1980_2019.csv     # Original Nickel prices
-│   │   └── btc_prices.csv                  # Original Bitcoin prices
-│   └── processed/            
-│       ├── ni_mar_parameters.csv           # Nickel MAR parameters
-│       ├── nickel_filtered.csv             # Nickel HP-filtered data
-│       ├── btc_mar_parameters.csv          # Bitcoin MAR parameters
-│       └── btc_filtered.csv               # Bitcoin HP-filtered data
+│   ├── raw/                  # Original Nickel prices CSV
+│   └── processed/            # HP-filtered data, MAR parameters
 │
 ├── r/
-│   ├── marx_estimation_ni.R                # MAR estimation — Nickel
-│   └── marx_estimation_btc.R              # MAR estimation — Bitcoin
+│   └── marx_estimation_ni.R     # MAR model estimation script
 │
 ├── src/
-│   ├── preprocessing_ni.py                 # Data loading — Nickel
-│   ├── preprocessing_btc.py               # Data loading — Bitcoin
-│   ├── closed_form.py                      # Cauchy closed-form benchmark
-│   ├── forecasting_sim.py                  # Method 1: simulation-based
-│   ├── forecasting_sample.py               # Method 2: sample-based
-│   └── monte_carlo.py                      # Validation framework
+│   ├── preprocessing_ni.py      # Data loading
+│   ├── closed_form.py        # Cauchy closed-form benchmark
+│   ├── forecasting_sim.py    # Method 1: simulation-based
+│   ├── forecasting_sample.py # Method 2: sample-based
+│   └── monte_carlo.py        # Validation framework
 │
-├── run_monte_carlo.py                      # Monte Carlo execution script
+├── run_monte_carlo.py        # Monte Carlo execution script
 │
 ├── notebooks/
-│   ├── nickel/
-│   │   ├── 01_data_exploration.ipynb       # Raw prices, HP-filtered cycle, noncausal component
-│   │   ├── 02_estimation_results.ipynb     # MAR model selection and parameter estimates
-│   │   ├── 03_forecasting_methods.ipynb    # Method validation against Cauchy closed-form
-│   │   ├── 04_empirical_application.ipynb  # Crash probabilities at six points along 2007 bubble
-│   │   └── 05_risk_assessment.ipynb        # VaR and ES along the 2007 nickel bubble
-│   └── bitcoin/
-│       ├── 01_btc_data.ipynb               # Bitcoin prices, HP-filtered cycle, noncausal component
-│       ├── 02_btc_estimation.ipynb         # MAR model selection and parameter estimates
-│       └── 03_btc_forecasting_risk.ipynb   # Crash probabilities, VaR and ES along Bitcoin bubbles
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_estimation_results.ipynb
+│   ├── 03_forecasting_methods.ipynb
+│   └── 04_empirical_application.ipynb
 │
 └── outputs/
-    ├── figures/                            # All generated plots
-    └── tables/                             # CSV tables
+    ├── figures/              # All generated plots
+    └── tables/               # CSV tables 
 ```
+
 ## Key Results
 
 ### Forecast Points on 2007 Nickel Bubble

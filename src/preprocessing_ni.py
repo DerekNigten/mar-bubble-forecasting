@@ -1,7 +1,7 @@
 """
-preprocessing.py
-Loads and validates the two outputs from marx_estimation.R:
-  - data/processed/mar_parameters.csv
+preprocessing_ni.py
+Loads and validates the two outputs from marx_estimation_ni.R:
+  - data/processed/ni_mar_parameters.csv
   - data/processed/nickel_filtered.csv
 """
 
@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 ROOT          = Path(__file__).resolve().parents[1]
-PARAMS_PATH   = ROOT / "data" / "processed" / "mar_parameters.csv"
+PARAMS_PATH   = ROOT / "data" / "processed" / "ni_mar_parameters.csv"
 FILTERED_PATH = ROOT / "data" / "processed" / "nickel_filtered.csv"
 
 
